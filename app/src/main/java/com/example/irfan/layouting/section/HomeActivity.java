@@ -12,6 +12,7 @@ import android.widget.TextView;
 
 import com.example.irfan.layouting.R;
 import com.example.irfan.layouting.helper.BottomNavigationViewHelper;
+import com.example.irfan.layouting.section.categories.FragmentCategories;
 import com.example.irfan.layouting.section.home.FragmentHome;
 
 public class HomeActivity extends AppCompatActivity {
@@ -28,7 +29,7 @@ public class HomeActivity extends AppCompatActivity {
                     addFragment(new FragmentHome());
                     return true;
                 case R.id.navigation_dashboard:
-
+                    addFragment(new FragmentCategories());
                     return true;
                 case R.id.navigation_notifications:
 

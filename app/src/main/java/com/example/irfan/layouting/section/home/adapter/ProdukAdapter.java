@@ -1,5 +1,6 @@
-package com.example.irfan.layouting.section.home;
+package com.example.irfan.layouting.section.home.adapter;
 
+import android.content.Context;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -15,24 +16,36 @@ import java.util.List;
 
 public class ProdukAdapter extends RecyclerView.Adapter<ProdukAdapter.MyViewHolder> {
     private List<ProdukModel> produkModels;
+    private ItemListener itemListener;
+    private Context context;
 
-    public class MyViewHolder extends RecyclerView.ViewHolder{
+    public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+        private View rootView;
         public TextView judul, harga;
         public ImageView gambar;
 
-        public MyViewHolder(View itemView) {
+        private ItemListener itemListener;
+
+        public MyViewHolder(View itemView, final ItemListener itemListener) {
             super(itemView);
+            this.rootView = itemView;
             judul = itemView.findViewById(R.id.textView);
             harga = itemView.findViewById(R.id.textView2);
+            rootView.setOnClickListener(this);
+            this.itemListener = itemListener;
+        }
 
+        @Override
+        public void onClick(View v) {
+            itemListener.onItemClick(getAdapterPosition());
         }
     }
 
-    ProdukAdapter(List<ProdukModel> produkModelList)
-    {
+    public ProdukAdapter(List<ProdukModel> produkModelList, Context context, ItemListener listener) {
         this.produkModels = produkModelList;
+        this.context = context;
+        itemListener = listener;
     }
-
 
 
     @Override
@@ -40,7 +53,7 @@ public class ProdukAdapter extends RecyclerView.Adapter<ProdukAdapter.MyViewHold
         View itemView = LayoutInflater.from(parent.getContext())
                 .inflate(R.layout.item_product, parent, false);
 
-        return new MyViewHolder(itemView);
+        return new MyViewHolder(itemView, itemListener);
     }
 
     @Override
@@ -56,5 +69,13 @@ public class ProdukAdapter extends RecyclerView.Adapter<ProdukAdapter.MyViewHold
     @Override
     public int getItemCount() {
         return produkModels.size();
+    }
+
+    public List<ProdukModel> getProdukList() {
+        return produkModels;
+    }
+
+    public interface ItemListener {
+        void onItemClick(int position);
     }
 }
