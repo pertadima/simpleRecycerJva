@@ -38,7 +38,7 @@ public class FragmentHome extends Fragment implements ProdukAdapter.ItemListener
         recyclerView = layout.findViewById(R.id.recyclerView);
 
         produkAdapter = new ProdukAdapter(list,getContext(),this);
-//        RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
+        //RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity());
         RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(getActivity(), LinearLayoutManager.HORIZONTAL, false);
         //RecyclerView.LayoutManager layoutManager = new GridLayoutManager(getActivity(), 2);
         recyclerView.setLayoutManager(layoutManager);
@@ -49,6 +49,7 @@ public class FragmentHome extends Fragment implements ProdukAdapter.ItemListener
     }
 
     private void masukkanData() {
+        list.clear();
         ProdukModel produkModel = new ProdukModel("", "Pure White Water", 14.50);
         list.add(produkModel);
 

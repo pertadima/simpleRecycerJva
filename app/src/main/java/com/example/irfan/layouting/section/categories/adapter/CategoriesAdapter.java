@@ -1,4 +1,4 @@
-package com.example.irfan.layouting.section.home.adapter;
+package com.example.irfan.layouting.section.categories.adapter;
 
 import android.content.Context;
 import android.support.annotation.NonNull;
@@ -6,31 +6,29 @@ import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
 import android.widget.TextView;
 
 import com.example.irfan.layouting.R;
-import com.example.irfan.layouting.data.ProdukModel;
+import com.example.irfan.layouting.data.CategoriesModel;
 
 import java.util.List;
 
-public class ProdukAdapter extends RecyclerView.Adapter<ProdukAdapter.MyViewHolder> {
-    private List<ProdukModel> produkModels;
+
+public class CategoriesAdapter extends RecyclerView.Adapter<CategoriesAdapter.MyViewHolder> {
+    private List<CategoriesModel> categoriesModels;
     private ItemListener itemListener;
     private Context context;
 
     public class MyViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         private View rootView;
-        public TextView judul, harga;
-        public ImageView gambar;
+        public TextView kategori;
 
         private ItemListener itemListener;
 
         public MyViewHolder(View itemView, final ItemListener itemListener) {
             super(itemView);
-            this   .rootView = itemView;
-            judul = itemView.findViewById(R.id.textView);
-            harga = itemView.findViewById(R.id.textView2);
+            this.rootView = itemView;
+            kategori = itemView.findViewById(R.id.txt_kategori);
             rootView.setOnClickListener(this);
             this.itemListener = itemListener;
         }
@@ -41,8 +39,8 @@ public class ProdukAdapter extends RecyclerView.Adapter<ProdukAdapter.MyViewHold
         }
     }
 
-    public ProdukAdapter(List<ProdukModel> produkModelList, Context context, ItemListener listener) {
-        this.produkModels = produkModelList;
+    public CategoriesAdapter(List<CategoriesModel> categoriesModelList, Context context, ItemListener listener) {
+        this.categoriesModels = categoriesModelList;
         this.context = context;
         itemListener = listener;
     }
@@ -51,28 +49,25 @@ public class ProdukAdapter extends RecyclerView.Adapter<ProdukAdapter.MyViewHold
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         View itemView = LayoutInflater.from(parent.getContext())
-                .inflate(R.layout.item_product, parent, false);
+                .inflate(R.layout.item_categories, parent, false);
 
         return new MyViewHolder(itemView, itemListener);
     }
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        ProdukModel produkModel = produkModels.get(position);
-        holder.judul.setText(produkModel.getJudul());
-        holder.harga.setText(String.valueOf(produkModel.getHarga()));
-
-
+        CategoriesModel categoriesModel = categoriesModels.get(position);
+        holder.kategori.setText(categoriesModel.getKategori());
     }
 
 
     @Override
     public int getItemCount() {
-        return produkModels.size();
+        return categoriesModels.size();
     }
 
-    public List<ProdukModel> getProdukList() {
-        return produkModels;
+    public List<CategoriesModel> getProdukList() {
+        return categoriesModels;
     }
 
     public interface ItemListener {

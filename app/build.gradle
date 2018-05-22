@@ -34,10 +34,7 @@ dependencies {
     implementation "com.android.support.constraint:constraint-layout:$constraintVersion"
     implementation "com.android.support:appcompat-v7:$supportVersion"
     implementation "com.android.support:design:$supportVersion"
-
-    implementation 'com.android.support:design:27.1.1'
-    implementation 'com.android.support.constraint:constraint-layout:1.1.0'
-    implementation 'com.android.support:support-vector-drawable:27.1.1'
+    implementation "com.android.support:support-vector-drawable:$supportVersion"
 
     implementation 'org.greenrobot:greendao:3.2.2'
     implementation 'com.facebook.stetho:stetho:1.5.0'

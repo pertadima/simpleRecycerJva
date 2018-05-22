@@ -27,7 +27,6 @@ public class DetailActivity extends AppCompatActivity {
         bundle = getIntent().getExtras();
         if (bundle != null) {
             produk = bundle.getParcelable("produk");
-            Toast.makeText(DetailActivity.this,produk.getJudul(),Toast.LENGTH_LONG).show();
             getSupportActionBar().setTitle(produk.getJudul());
         }
 
