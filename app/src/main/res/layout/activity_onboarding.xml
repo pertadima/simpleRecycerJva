@@ -10,11 +10,11 @@
         android:id="@+id/container"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
-        android:paddingBottom="?attr/actionBarSize"/>
+        android:paddingBottom="?android:attr/actionBarSize"/>
 
     <FrameLayout
         android:layout_width="match_parent"
-        android:layout_height="?attr/actionBarSize"
+        android:layout_height="?android:attr/actionBarSize"
         android:paddingEnd="@dimen/activity_horizontal_margin"
         android:paddingLeft="@dimen/activity_horizontal_margin"
         android:paddingRight="@dimen/activity_horizontal_margin"
@@ -79,7 +79,7 @@
             android:layout_height="wrap_content"
             android:layout_gravity="end|center"
             android:padding="@dimen/activity_horizontal_margin"
-            android:src="@drawable/ic_chevron_right_24dp"
+            app:srcCompat="@drawable/ic_chevron_right_24dp"
             android:tint="@android:color/white" />
 
     </FrameLayout>

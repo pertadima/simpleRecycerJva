@@ -11,11 +11,12 @@ import android.widget.TextView;
 
 import com.example.irfan.layouting.R;
 import com.example.irfan.layouting.data.ProdukModel;
+import com.example.irfan.layouting.data.database.Produk;
 
 import java.util.List;
 
 public class ProdukAdapter extends RecyclerView.Adapter<ProdukAdapter.MyViewHolder> {
-    private List<ProdukModel> produkModels;
+    private List<Produk> produkModels;
     private ItemListener itemListener;
     private Context context;
 
@@ -41,12 +42,17 @@ public class ProdukAdapter extends RecyclerView.Adapter<ProdukAdapter.MyViewHold
         }
     }
 
-    public ProdukAdapter(List<ProdukModel> produkModelList, Context context, ItemListener listener) {
+    public ProdukAdapter(List<Produk> produkModelList, Context context, ItemListener listener) {
         this.produkModels = produkModelList;
         this.context = context;
         itemListener = listener;
     }
 
+    public void updateProdukList(List<Produk> produkModels) {
+        this.produkModels.clear();
+        this.produkModels.addAll(produkModels);
+        notifyDataSetChanged();
+    }
 
     @Override
     public MyViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
@@ -58,7 +64,7 @@ public class ProdukAdapter extends RecyclerView.Adapter<ProdukAdapter.MyViewHold
 
     @Override
     public void onBindViewHolder(@NonNull MyViewHolder holder, int position) {
-        ProdukModel produkModel = produkModels.get(position);
+        Produk produkModel = produkModels.get(position);
         holder.judul.setText(produkModel.getJudul());
         holder.harga.setText(String.valueOf(produkModel.getHarga()));
 
@@ -71,7 +77,7 @@ public class ProdukAdapter extends RecyclerView.Adapter<ProdukAdapter.MyViewHold
         return produkModels.size();
     }
 
-    public List<ProdukModel> getProdukList() {
+    public List<Produk> getProdukList() {
         return produkModels;
     }
 

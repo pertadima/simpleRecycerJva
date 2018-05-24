@@ -17,6 +17,7 @@ public class FragmentMain extends Fragment {
     View layout;
     private TabLayout tabLayout;
     private ViewPager viewPager;
+    private TabAdapter adapter;
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
@@ -37,10 +38,12 @@ public class FragmentMain extends Fragment {
     }
 
     private void setupViewPager(ViewPager viewPager) {
-        TabAdapter adapter = new TabAdapter(getActivity().getSupportFragmentManager());
-        adapter.addFragment(new FragmentHome(), "ONE");
-        adapter.addFragment(new FragmentTab(), "TWO");
-        adapter.addFragment(new FragmentTab(), "THREE");
+        if (adapter == null) {
+            adapter = new TabAdapter(getActivity().getSupportFragmentManager());
+            adapter.addFragment(new FragmentHome(), "ONE");
+            adapter.addFragment(new FragmentTab(), "TWO");
+            adapter.addFragment(new FragmentTab(), "THREE");
+        }
         viewPager.setAdapter(adapter);
     }
 }
